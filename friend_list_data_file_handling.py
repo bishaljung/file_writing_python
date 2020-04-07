@@ -1,5 +1,7 @@
 import sys
+import os
 def write_data(name):
+    
     friend = open(name+".txt",'w')
     id_num = input('ID number: ')
     phone_number = int(input('phone_number: '))
@@ -12,27 +14,35 @@ def write_data(name):
 #my problem is :
 #name is not passing to the function in read_data
 #and read_data function is not working
+def delete_data(name):
+        os.remove(name+".txt")
+        print("information file, removed successfully")
+
 def read_data(name):
     #name = input("enter the name to search data:")
     #that is taken from the main method function and is carried out in read_name(name):
+   #try
+   with open(name+".txt",'r') as filehandle:
+     filecontent = filehandle.read()
+     print(filecontent)
 
-  with open(name, 'r') as friend:
-      filecontent = friend.read()
-      print(filecontent)
-
+   #except ValueError:
+     # print("enter the valid name")
     #another way of reading file:
-   # friend = open("name.txt",'r')
-    #if friend.mode == 'r'
-     #   contents = friend.read()
-      #  print(contents)
+    #infile = open(name,'r')
+   # contents = infile.read()
+   # print(contents)
+    #infile.close()
+
 def main():
     print("WELCOME TO MY RECORDS")
 
     #retake = 'y'
-    #while retake =='y' or retake == 'Y':
-    option= int(input('enter the option:\n1)to write/add the data\n2)to search the already saved data\n3)to exit the system'))
+    #while retake =='y':
+    option= int(input('enter the option:\n1)to write/add the data\n2)to search the already saved data\n3)to exit the system\n'
+                      '4)to remove the data'))
 
-    #name = input("Ener your friends name:")
+   #name = input("Ener your friends name:")
     if option == 3:
         sys.exit()
     elif option == 1:
@@ -42,10 +52,14 @@ def main():
         name = input("Ener your friends name:")
         read_data(name)
         #read data function is not working
+    elif option == 4:
+         name = input("enter the name to delete the data:")
+         delete_data(name)
     else:
           print("enter the valid option from the main menu:")
-          sys.exit()#when while loop works, it's to be removed
-    #print("do you wish to add another data/ another friend's data?")
-    #retake = input("enter: y to continue,\npress anything else(enter) : no: ")
-     
+          main()#when while loop works, it's to be removed
+
+   # print("do you wish to go to main menu?")
+   #retake = input("enter: y to continue,\npress anything else(enter) : no: ")
+
 main()
