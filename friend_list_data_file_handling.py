@@ -1,7 +1,7 @@
 import sys
 import os
 def write_data(name):
-    
+
     friend = open(name+".txt",'w')
     id_num = input('ID number: ')
     phone_number = int(input('phone_number: '))
@@ -26,40 +26,49 @@ def read_data(name):
      filecontent = filehandle.read()
      print(filecontent)
 
-   #except ValueError:
+     #except ValueError:
      # print("enter the valid name")
     #another way of reading file:
     #infile = open(name,'r')
    # contents = infile.read()
    # print(contents)
     #infile.close()
+def edit_data(name):
+    with open(name+".txt",'r') as filehandle:
+      filecontent = filehandle.read()
+      print(filecontent)
+
 
 def main():
     print("WELCOME TO MY RECORDS")
 
-    #retake = 'y'
-    #while retake =='y':
-    option= int(input('enter the option:\n1)to write/add the data\n2)to search the already saved data\n3)to exit the system\n'
-                      '4)to remove the data'))
+    retake = 'y'
+    while retake =='y':
+        option= int(input('enter the option:\n1)to write/add the data\n2)to search the already saved data\n3)to edit the data\n'
+                      '4)to remove the data\n5)to exit the system'))
 
-   #name = input("Ener your friends name:")
-    if option == 3:
-        sys.exit()
-    elif option == 1:
-        name = input("Ener your friends name:")
-        write_data(name)
-    elif option == 2:
-        name = input("Ener your friends name:")
-        read_data(name)
-        #read data function is not working
-    elif option == 4:
-         name = input("enter the name to delete the data:")
-         delete_data(name)
-    else:
-          print("enter the valid option from the main menu:")
-          main()#when while loop works, it's to be removed
+       #name = input("Ener your friends name:")
+        if option == 5:
+            sys.exit()
+        elif option == 1:
+            name = input("Ener your friends name:")
+            write_data(name)
+        elif option == 2:
+            name = input("Ener your friends name:")
+            read_data(name)
+            #read data function is not working
+        elif option == 3:
+            name = input("enter the name to edit the data:")
+            edit_data(name)
+        elif option == 4:
+              name = input("enter the name to delete the data:")
+              delete_data(name)
 
-   # print("do you wish to go to main menu?")
-   #retake = input("enter: y to continue,\npress anything else(enter) : no: ")
+        else:
+              print("enter the valid option from the main menu:")
+              main()#when while loop works, it's to be removed
+
+        print("do you wish to go to main menu?")
+        retake = input("enter: y to continue,\npress anything else(enter) : no: ")
 
 main()
