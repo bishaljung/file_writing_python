@@ -35,8 +35,29 @@ def read_data(name):
     #infile.close()
 def edit_data(name):
     with open(name+".txt",'r') as filehandle:
-      filecontent = filehandle.read()
+      filecontent = filehandle.readlines()
       print(filecontent)
+
+    change_param = input("What would like to change: ")
+    value = input("Enter the value for %s"%change_param)
+    person = []
+    for line in filecontent[1:]:
+        person.append(line.split(":"))
+        
+    new_person = []
+    for data in person:
+        if data[0]==change_param:
+            new_person.append([data[0],value])
+        else:
+            new_person.append(data)
+    if change_param == "name":
+        name = value
+
+    with open(name+".txt",'w') as f :
+        f.write("The details of %s are:\n"%name)
+        for line in new_person:
+            f.write("{} : {}".format(line[0],line[1]))
+    
 
 
 def main():
