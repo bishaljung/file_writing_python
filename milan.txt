@@ -1,4 +1,0 @@
-the details of milan is:
-name: milan
-id_num: 123
-phone number: 1232123

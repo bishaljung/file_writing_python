@@ -1,4 +1,0 @@
-The details of test are:
-name : test nid_num :  123
-phone number :  9813651256
-
